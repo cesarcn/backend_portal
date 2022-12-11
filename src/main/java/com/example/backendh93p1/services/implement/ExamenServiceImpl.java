@@ -1,8 +1,8 @@
 package com.example.backendh93p1.services.implement;
 
 
-import com.example.backendh93p1.entity.Categoria;
-import com.example.backendh93p1.entity.Examen;
+import com.example.backendh93p1.entity.CategoriaEntity;
+import com.example.backendh93p1.entity.ExamenEntity;
 import com.example.backendh93p1.repository.ExamenRepository;
 import com.example.backendh93p1.services.ExamenService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,44 +19,45 @@ public class ExamenServiceImpl implements ExamenService {
     private ExamenRepository examenRepository;
 
     @Override
-    public Examen agregarExamen(Examen examen) {
-        return examenRepository.save(examen);
+    public ExamenEntity agregarExamen(ExamenEntity examenEntity) {
+        return examenRepository.save(examenEntity);
     }
 
     @Override
-    public Examen actualizarExamen(Examen examen) {
-        return examenRepository.save(examen);
+    public ExamenEntity actualizarExamen(ExamenEntity examenEntity) {
+        return examenRepository.save(examenEntity);
     }
 
     @Override
-    public Set<Examen> obtenerExamenes() {
+    public Set<ExamenEntity> obtenerExamenes() {
         return new LinkedHashSet<>(examenRepository.findAll());
     }
 
     @Override
-    public Examen obtenerExamen(Long examenId) {
+    public ExamenEntity obtenerExamen(Long examenId) {
         return examenRepository.findById(examenId).get();
     }
 
     @Override
-    public void eliminarExamen(Long examenId) {
-        Examen examen = new Examen();
-        examen.setExamenId(examenId);
-        examenRepository.delete(examen);
+    public ExamenEntity eliminarExamen(Long examenId) {
+        ExamenEntity examenEntity = new ExamenEntity();
+        examenEntity.setExamenId(examenId);
+        examenRepository.delete(examenEntity);
+        return examenEntity;
     }
 
     @Override
-    public List<Examen> listarExamenesDeUnaCategoria(Categoria categoria) {
-        return this.examenRepository.findByCategoria(categoria);
+    public List<ExamenEntity> listarExamenesDeUnaCategoria(CategoriaEntity categoriaEntity) {
+        return this.examenRepository.findByCategoria(categoriaEntity);
     }
 
     @Override
-    public List<Examen> obtenerExamenesActivos() {
+    public List<ExamenEntity> obtenerExamenesActivos() {
         return examenRepository.findByActivo(true);
     }
 
     @Override
-    public List<Examen> obtenerExamenesActivosDeUnaCategoria(Categoria categoria) {
-        return examenRepository.findByCategoriaAndActivo(categoria,true);
+    public List<ExamenEntity> obtenerExamenesActivosDeUnaCategoria(CategoriaEntity categoriaEntity) {
+        return examenRepository.findByCategoriaAndActivo(categoriaEntity,true);
     }
 }

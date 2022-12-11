@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "preguntas")
-public class Pregunta {
+public class PreguntaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +24,7 @@ public class Pregunta {
     private String respuesta;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    private Examen examen;
+    private ExamenEntity examenEntity;
 
     public Long getPreguntaId() {
         return preguntaId;
@@ -82,12 +82,12 @@ public class Pregunta {
         this.opcion4 = opcion4;
     }
 
-    public Examen getExamen() {
-        return examen;
+    public ExamenEntity getExamen() {
+        return examenEntity;
     }
 
-    public void setExamen(Examen examen) {
-        this.examen = examen;
+    public void setExamen(ExamenEntity examenEntity) {
+        this.examenEntity = examenEntity;
     }
 
     public String getRespuestaDada() {
@@ -106,7 +106,7 @@ public class Pregunta {
         this.respuesta = respuesta;
     }
 
-    public Pregunta(){
+    public PreguntaEntity(){
 
     }
 

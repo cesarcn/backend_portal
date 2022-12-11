@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "categorias")
-public class Categoria {
+public class CategoriaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,9 +18,9 @@ public class Categoria {
 
     private String descripcion;
 
-    @OneToMany(mappedBy = "categoria",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "categoriaEntity",cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Examen> examenes = new LinkedHashSet<>();
+    private Set<ExamenEntity> examenes = new LinkedHashSet<>();
 
     public Long getCategoriaId() {
         return categoriaId;
@@ -46,15 +46,15 @@ public class Categoria {
         this.descripcion = descripcion;
     }
 
-    public Set<Examen> getExamenes() {
+    public Set<ExamenEntity> getExamenes() {
         return examenes;
     }
 
-    public void setExamenes(Set<Examen> examenes) {
+    public void setExamenes(Set<ExamenEntity> examenes) {
         this.examenes = examenes;
     }
 
-    public Categoria(){
+    public CategoriaEntity(){
 
     }
 }

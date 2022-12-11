@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "examenes")
-public class Examen {
+public class ExamenEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,11 +21,11 @@ public class Examen {
     private boolean activo = false;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    private Categoria categoria;
+    private CategoriaEntity categoriaEntity;
 
-    @OneToMany(mappedBy = "examen",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "examenEntity",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Pregunta> preguntas = new HashSet<>();
+    private Set<PreguntaEntity> preguntaEntities = new HashSet<>();
 
     public Long getExamenId() {
         return examenId;
@@ -75,22 +75,22 @@ public class Examen {
         this.activo = activo;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
+    public CategoriaEntity getCategoria() {
+        return categoriaEntity;
     }
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setCategoria(CategoriaEntity categoriaEntity) {
+        this.categoriaEntity = categoriaEntity;
     }
 
-    public Set<Pregunta> getPreguntas() {
-        return preguntas;
+    public Set<PreguntaEntity> getPreguntas() {
+        return preguntaEntities;
     }
 
-    public void setPreguntas(Set<Pregunta> preguntas) {
-        this.preguntas = preguntas;
+    public void setPreguntas(Set<PreguntaEntity> preguntaEntities) {
+        this.preguntaEntities = preguntaEntities;
     }
 
-    public Examen() {
+    public ExamenEntity() {
     }
 }

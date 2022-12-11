@@ -1,26 +1,26 @@
 package com.example.backendh93p1.services;
 
-import com.example.backendh93p1.entity.Categoria;
-import com.example.backendh93p1.entity.Examen;
+import com.example.backendh93p1.entity.CategoriaEntity;
+import com.example.backendh93p1.entity.ExamenEntity;
 
 import java.util.List;
 import java.util.Set;
 
 public interface ExamenService {
 
-    Examen agregarExamen(Examen examen);
+    ExamenEntity agregarExamen(ExamenEntity examenEntity);
 
-    Examen actualizarExamen(Examen examen);
+    ExamenEntity actualizarExamen(ExamenEntity examenEntity);
 
-    Set<Examen> obtenerExamenes();
+    Set<ExamenEntity> obtenerExamenes();
 
-    Examen obtenerExamen(Long examenId);
+    ExamenEntity obtenerExamen(Long examenId);
 
-    void eliminarExamen(Long examenId);
+    ExamenEntity eliminarExamen(Long examenId);
 
-    List<Examen> listarExamenesDeUnaCategoria(Categoria categoria);
+    List<ExamenEntity> listarExamenesDeUnaCategoria(CategoriaEntity categoriaEntity);
 
-    List<Examen> obtenerExamenesActivos();
+    List<ExamenEntity> obtenerExamenesActivos();
 
-    List<Examen> obtenerExamenesActivosDeUnaCategoria(Categoria categoria);
+    List<ExamenEntity> obtenerExamenesActivosDeUnaCategoria(CategoriaEntity categoriaEntity);
 }

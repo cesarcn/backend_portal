@@ -1,12 +1,14 @@
 package com.example.backendh93p1.services.implement;
 
-import com.example.backendh93p1.entity.Examen;
-import com.example.backendh93p1.entity.Pregunta;
+
+import com.example.backendh93p1.entity.ExamenEntity;
+import com.example.backendh93p1.entity.PreguntaEntity;
 import com.example.backendh93p1.repository.PreguntaRepository;
 import com.example.backendh93p1.services.PreguntaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -16,39 +18,40 @@ public class PreguntaServiceImpl implements PreguntaService {
     private PreguntaRepository preguntaRepository;
 
     @Override
-    public Pregunta agregarPregunta(Pregunta pregunta) {
-        return preguntaRepository.save(pregunta);
+    public PreguntaEntity agregarPregunta(PreguntaEntity preguntaEntity) {
+        return preguntaRepository.save(preguntaEntity);
     }
 
     @Override
-    public Pregunta actualizarPregunta(Pregunta pregunta) {
-        return preguntaRepository.save(pregunta);
+    public PreguntaEntity actualizarPregunta(PreguntaEntity preguntaEntity) {
+        return preguntaRepository.save(preguntaEntity);
     }
 
     @Override
-    public Set<Pregunta> obtenerPreguntas() {
-        return (Set<Pregunta>) preguntaRepository.findAll();
+    public Set<PreguntaEntity> obtenerPreguntas() {
+        return (Set<PreguntaEntity>) preguntaRepository.findAll();
     }
 
     @Override
-    public Pregunta obtenerPregunta(Long preguntaId) {
+    public PreguntaEntity obtenerPregunta(Long preguntaId) {
         return preguntaRepository.findById(preguntaId).get();
     }
 
     @Override
-    public Set<Pregunta> obtenerPreguntasDelExamen(Examen examen) {
-        return preguntaRepository.findByExamen(examen);
+    public List<PreguntaEntity> obtenerPreguntasDelExamen(ExamenEntity examenEntity) {
+        return preguntaRepository.findByExamen(examenEntity);
     }
 
     @Override
-    public void eliminarPregunta(Long preguntaId) {
-        Pregunta pregunta = new Pregunta();
-        pregunta.setPreguntaId(preguntaId);
-        preguntaRepository.delete(pregunta);
+    public ExamenEntity eliminarPregunta(Long preguntaId) {
+        PreguntaEntity preguntaEntity = new PreguntaEntity();
+        preguntaEntity.setPreguntaId(preguntaId);
+        preguntaRepository.delete(preguntaEntity);
+        return null;
     }
 
     @Override
-    public Pregunta listarPregunta(Long preguntaId) {
+    public PreguntaEntity listarPregunta(Long preguntaId) {
         return this.preguntaRepository.getOne(preguntaId);
     }
 }

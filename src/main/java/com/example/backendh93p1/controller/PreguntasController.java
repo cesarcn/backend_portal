@@ -1,22 +1,51 @@
 package com.example.backendh93p1.controller;
 
-import com.example.backendh93p1.entity.Pregunta;
+import com.example.backendh93p1.entity.ExamenEntity;
+import com.example.backendh93p1.entity.PreguntaEntity;
 import com.example.backendh93p1.repository.PreguntaRepository;
+import com.example.backendh93p1.services.PreguntaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/preguntas")
+@CrossOrigin("*")
 public class PreguntasController {
     @Autowired
-    private PreguntaRepository preguntasRepository;
+    private PreguntaService preguntaService;
 
-    @GetMapping
-    public List<Pregunta> buscarpreguntas(){
-        return (List<Pregunta>) preguntasRepository.findAll();
+    @GetMapping ("/listarpreguntas")
+    public ResponseEntity<?> listarPregunta (){
+        return ResponseEntity.ok(preguntaService.obtenerPreguntas());
+    }
+
+    @GetMapping ("/listarpreguntas/{preguntaId}")
+    public PreguntaEntity listarPreguntaId (@PathVariable("preguntaId") Long preguntaId){
+        return preguntaService.obtenerPregunta(preguntaId);
+    }
+
+    @PostMapping ("/agregarpregunta")
+    public ResponseEntity<PreguntaEntity> agregarPregunta (@RequestBody PreguntaEntity pregunta){
+        PreguntaEntity preguntanueva = preguntaService.agregarPregunta(pregunta);
+        return  ResponseEntity.ok(preguntanueva);
+    }
+
+    @PutMapping("/actualizarexamen")
+    public ResponseEntity<PreguntaEntity> actualizarPregunta (@RequestBody  PreguntaEntity pregunta){
+        PreguntaEntity actualizarpregunta = preguntaService.actualizarPregunta(pregunta);
+        return  ResponseEntity.ok(actualizarpregunta);
+    }
+
+    @DeleteMapping ("/eliminarpregunta/{preguntaId}")
+    public ExamenEntity eliminarPre (@PathVariable ("preguntaId") Long preguntaId){
+        return preguntaService.eliminarPregunta(preguntaId);
+    }
+
+    @GetMapping("/preguntasexamen")
+    public List<PreguntaEntity> preguntasExam(){
+        return preguntaService.obtenerPreguntasDelExamen(new ExamenEntity());
     }
 }

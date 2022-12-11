@@ -1,13 +1,10 @@
 package com.example.backendh93p1.controller;
 
-import com.example.backendh93p1.entity.Categoria;
-import com.example.backendh93p1.repository.CategoriaRepository;
+import com.example.backendh93p1.entity.CategoriaEntity;
 import com.example.backendh93p1.services.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping ("/categoria")
@@ -23,13 +20,24 @@ public class CategoriaController {
     }
 
     @GetMapping("/listar/{idCategoria}")
-    public Categoria listarCategoriaId (@PathVariable ("idCategoria") Long idCategoria){
+    public CategoriaEntity listarCategoriaId (@PathVariable ("idCategoria") Long idCategoria){
         return categoriaService.obtenerCategoria(idCategoria);
     }
 
     @PostMapping("/agregar")
-    public ResponseEntity<Categoria> agregarCategoria (@RequestBody Categoria categoria) {
-        Categoria categorianueva = categoriaService.agregarCategoria(categoria);
+    public ResponseEntity<CategoriaEntity> agregarCategoria (@RequestBody CategoriaEntity categoriaEntity) {
+        CategoriaEntity categorianueva = categoriaService.agregarCategoria(categoriaEntity);
         return ResponseEntity.ok(categorianueva);
+    }
+
+    @PutMapping("/actualizar")
+    public ResponseEntity<CategoriaEntity> actualizarCategoria (@RequestBody CategoriaEntity categoriaEntity) {
+        CategoriaEntity actualizarcat = categoriaService.actualizarCategoria(categoriaEntity);
+        return ResponseEntity.ok(actualizarcat);
+    }
+
+    @DeleteMapping("/eliminar/{idCategoria}")
+    public CategoriaEntity eliminarCatId (@PathVariable ("idCategoria") Long idCategoria){
+        return categoriaService.eliminarCategoria(idCategoria);
     }
 }
