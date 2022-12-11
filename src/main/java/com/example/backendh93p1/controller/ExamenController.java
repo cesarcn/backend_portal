@@ -16,17 +16,17 @@ public class ExamenController {
     @Autowired
     private ExamenService examenService;
 
-    @GetMapping("/listar")
-    public ResponseEntity<?> listarExamen(){
-        return ResponseEntity.ok(examenService.obtenerExamenes());
+    @GetMapping
+    public List<ExamenEntity> busquedaexamen(){
+        return (List<ExamenEntity>) examenService.obtenerExamenes();
     }
 
-    @PostMapping("/crearexamen")
+    @PostMapping
     public void crearexamen (@RequestBody ExamenEntity examenEntityClient){
         examenService.agregarExamen(examenEntityClient);
     }
 
-    @PutMapping("/actualizarexamen")
+    @PutMapping
     public void actualizarExamen (@RequestBody ExamenEntity examenEntityClient){
         examenService.actualizarExamen(examenEntityClient);
     }
@@ -35,14 +35,4 @@ public class ExamenController {
     public ExamenEntity obtenerExamenId (@PathVariable ("idexamen") Long idexamen){
         return examenService.obtenerExamen(idexamen);
     }
-
-    @DeleteMapping(value = "/eliminar/{examenId}")
-    public ExamenEntity eliminarExamen (@PathVariable ("examenId") Long examenId){
-        return examenService.eliminarExamen(examenId);
-    }
-
-    /*@GetMapping ("/examencategoria")
-    public List<ExamenEntity> listarExamenesDeUnaCat (){
-        return (List<ExamenEntity>) examenService.obtenerExamenesActivosDeUnaCategoria();
-    }*/
 }

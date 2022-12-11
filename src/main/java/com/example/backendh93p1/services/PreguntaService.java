@@ -16,7 +16,7 @@ public interface PreguntaService {
 
     PreguntaEntity obtenerPregunta(Long preguntaId);
 
-    List<PreguntaEntity> obtenerPreguntasDelExamen(ExamenEntity examenEntity);
+    Set<PreguntaEntity> obtenerPreguntasDelExamen(ExamenEntity examenEntity);
 
     ExamenEntity eliminarPregunta(Long preguntaId);
 

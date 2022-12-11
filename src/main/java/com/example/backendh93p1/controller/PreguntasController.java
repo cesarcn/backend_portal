@@ -16,36 +16,5 @@ import java.util.List;
 public class PreguntasController {
     @Autowired
     private PreguntaService preguntaService;
-
-    @GetMapping ("/listarpreguntas")
-    public ResponseEntity<?> listarPregunta (){
-        return ResponseEntity.ok(preguntaService.obtenerPreguntas());
-    }
-
-    @GetMapping ("/listarpreguntas/{preguntaId}")
-    public PreguntaEntity listarPreguntaId (@PathVariable("preguntaId") Long preguntaId){
-        return preguntaService.obtenerPregunta(preguntaId);
-    }
-
-    @PostMapping ("/agregarpregunta")
-    public ResponseEntity<PreguntaEntity> agregarPregunta (@RequestBody PreguntaEntity pregunta){
-        PreguntaEntity preguntanueva = preguntaService.agregarPregunta(pregunta);
-        return  ResponseEntity.ok(preguntanueva);
-    }
-
-    @PutMapping("/actualizarexamen")
-    public ResponseEntity<PreguntaEntity> actualizarPregunta (@RequestBody  PreguntaEntity pregunta){
-        PreguntaEntity actualizarpregunta = preguntaService.actualizarPregunta(pregunta);
-        return  ResponseEntity.ok(actualizarpregunta);
-    }
-
-    @DeleteMapping ("/eliminarpregunta/{preguntaId}")
-    public ExamenEntity eliminarPre (@PathVariable ("preguntaId") Long preguntaId){
-        return preguntaService.eliminarPregunta(preguntaId);
-    }
-
-    @GetMapping("/preguntasexamen")
-    public List<PreguntaEntity> preguntasExam(){
-        return preguntaService.obtenerPreguntasDelExamen(new ExamenEntity());
-    }
+    
 }
