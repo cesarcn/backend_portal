@@ -45,6 +45,7 @@ public class PreguntaServiceImpl implements PreguntaService {
         PreguntaEntity preguntaEntity = new PreguntaEntity();
         preguntaEntity.setPreguntaId(preguntaId);
         preguntaRepository.delete(preguntaEntity);
+        return null;
     }
 
     @Override
