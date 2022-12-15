@@ -1,6 +1,6 @@
 package com.example.backendh93p1.services.implement;
 
-import com.example.backendh93p1.entity.CategoriaEntity;
+import com.example.backendh93p1.entity.Categoria;
 import com.example.backendh93p1.repository.CategoriaRepository;
 import com.example.backendh93p1.services.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,30 +15,29 @@ public class CategoriaServiceImpl implements CategoriaService {
     private CategoriaRepository categoriaRepository;
 
     @Override
-    public CategoriaEntity agregarCategoria(CategoriaEntity categoriaEntity) {
-        return categoriaRepository.save(categoriaEntity);
+    public Categoria agregarCategoria(Categoria categoria) {
+        return categoriaRepository.save(categoria);
     }
 
     @Override
-    public CategoriaEntity actualizarCategoria(CategoriaEntity categoriaEntity) {
-        return categoriaRepository.save(categoriaEntity);
+    public Categoria actualizarCategoria(Categoria categoria) {
+        return categoriaRepository.save(categoria);
     }
 
     @Override
-    public Set<CategoriaEntity> obtenerCategorias() {
+    public Set<Categoria> obtenerCategorias() {
         return new LinkedHashSet<>(categoriaRepository.findAll());
     }
 
     @Override
-    public CategoriaEntity obtenerCategoria(Long categoriaId) {
+    public Categoria obtenerCategoria(Long categoriaId) {
         return categoriaRepository.findById(categoriaId).get();
     }
 
     @Override
-    public CategoriaEntity eliminarCategoria(Long categoriaId) {
-        CategoriaEntity categoriaEntity = new CategoriaEntity();
-        categoriaEntity.setCategoriaId(categoriaId);
-        categoriaRepository.delete(categoriaEntity);
-        return categoriaEntity;
+    public void eliminarCategoria(Long categoriaId) {
+        Categoria categoria = new Categoria();
+        categoria.setCategoriaId(categoriaId);
+        categoriaRepository.delete(categoria);
     }
 }

@@ -1,7 +1,7 @@
 package com.example.backendh93p1.services;
 
-import com.example.backendh93p1.entity.ExamenEntity;
-import com.example.backendh93p1.entity.PreguntaEntity;
+import com.example.backendh93p1.entity.Examen;
+import com.example.backendh93p1.entity.Pregunta;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
@@ -9,17 +9,17 @@ import java.util.Set;
 @Service
 public interface PreguntaService {
 
-    PreguntaEntity agregarPregunta(PreguntaEntity preguntaEntity);
+    Pregunta agregarPregunta(Pregunta pregunta);
 
-    PreguntaEntity actualizarPregunta(PreguntaEntity preguntaEntity);
+    Pregunta actualizarPregunta(Pregunta pregunta);
 
-    Set<PreguntaEntity> obtenerPreguntas();
+    Set<Pregunta> obtenerPreguntas();
 
-    PreguntaEntity obtenerPregunta(Long preguntaId);
+    Pregunta obtenerPregunta(Long preguntaId);
 
-    Set<PreguntaEntity> obtenerPreguntasDelExamen(ExamenEntity examenEntity);
+    Set<Pregunta> obtenerPreguntasDelExamen(Examen examen);
 
-    ExamenEntity eliminarPregunta(Long preguntaId);
+    void eliminarPregunta(Long preguntaId);
 
-    PreguntaEntity listarPregunta(Long preguntaId);
+    Pregunta listarPregunta(Long preguntaId);
 }

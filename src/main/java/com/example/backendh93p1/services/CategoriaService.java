@@ -1,6 +1,6 @@
 package com.example.backendh93p1.services;
 
-import com.example.backendh93p1.entity.CategoriaEntity;
+import com.example.backendh93p1.entity.Categoria;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
@@ -8,13 +8,13 @@ import java.util.Set;
 @Service
 public interface CategoriaService {
 
-    CategoriaEntity agregarCategoria(CategoriaEntity categoriaEntity);
+    Categoria agregarCategoria(Categoria categoria);
 
-    CategoriaEntity actualizarCategoria(CategoriaEntity categoriaEntity);
+    Categoria actualizarCategoria(Categoria categoria);
 
-    Set<CategoriaEntity> obtenerCategorias();
+    Set<Categoria> obtenerCategorias();
 
-    CategoriaEntity obtenerCategoria(Long categoriaId);
+    Categoria obtenerCategoria(Long categoriaId);
 
-    CategoriaEntity eliminarCategoria(Long categoriaId);
+    void eliminarCategoria(Long categoriaId);
 }

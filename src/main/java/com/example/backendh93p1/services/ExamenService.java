@@ -1,26 +1,28 @@
 package com.example.backendh93p1.services;
 
-import com.example.backendh93p1.entity.CategoriaEntity;
-import com.example.backendh93p1.entity.ExamenEntity;
+import com.example.backendh93p1.entity.Categoria;
+import com.example.backendh93p1.entity.Examen;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
 
+@Service
 public interface ExamenService {
 
-    ExamenEntity agregarExamen(ExamenEntity examenEntity);
+    Examen agregarExamen(Examen examen);
 
-    ExamenEntity actualizarExamen(ExamenEntity examenEntity);
+    Examen actualizarExamen(Examen examen);
 
-    Set<ExamenEntity> obtenerExamenes();
+    Set<Examen> obtenerExamenes();
 
-    ExamenEntity obtenerExamen(Long examenId);
+    Examen obtenerExamen(Long examenId);
 
-    ExamenEntity eliminarExamen(Long examenId);
+    void eliminarExamen(Long examenId);
 
-    List<ExamenEntity> listarExamenesDeUnaCategoria(CategoriaEntity categoriaEntity);
+    List<Examen> listarExamenesDeUnaCategoria(Categoria categoria);
 
-    List<ExamenEntity> obtenerExamenesActivos();
+    List<Examen> obtenerExamenesActivos();
 
-    List<ExamenEntity> obtenerExamenesActivosDeUnaCategoria(CategoriaEntity categoriaEntity);
+    List<Examen> obtenerExamenesActivosDeUnaCategoria(Categoria categoria);
 }
