@@ -52,3 +52,4 @@ public class PreguntaServiceImpl implements PreguntaService {
         return this.preguntaRepository.getOne(preguntaId);
     }
 }
+

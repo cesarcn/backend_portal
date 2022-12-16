@@ -1,5 +1,6 @@
 package com.example.backendh93p1.controller;
 
+
 import com.example.backendh93p1.entity.Categoria;
 import com.example.backendh93p1.entity.Examen;
 import com.example.backendh93p1.services.ExamenService;
@@ -13,7 +14,6 @@ import java.util.List;
 @RequestMapping("/examen")
 @CrossOrigin("*")
 public class ExamenController {
-
     @Autowired
     private ExamenService examenService;
 
@@ -60,5 +60,4 @@ public class ExamenController {
         categoria.setCategoriaId(categoriaId);
         return examenService.obtenerExamenesActivosDeUnaCategoria(categoria);
     }
-
 }

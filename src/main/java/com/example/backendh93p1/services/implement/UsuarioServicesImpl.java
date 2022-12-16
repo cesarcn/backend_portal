@@ -8,6 +8,7 @@ import com.example.backendh93p1.services.UsuarioServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Service
@@ -38,6 +39,12 @@ public class UsuarioServicesImpl implements UsuarioServices {
     @Override
     public UsuariosEntity obtenerUsuarioService(String username) {
         return userRepo.findByUsername(username);
+    }
+
+
+    @Override
+    public Set<UsuariosEntity> listarCategorias(UsuariosEntity usuariosEntity) {
+        return new LinkedHashSet<>(userRepo.findAll());
     }
 
     @Override

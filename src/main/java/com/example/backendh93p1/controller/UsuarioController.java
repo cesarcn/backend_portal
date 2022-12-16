@@ -1,5 +1,6 @@
 package com.example.backendh93p1.controller;
 
+import com.example.backendh93p1.entity.DatosClientesEntity;
 import com.example.backendh93p1.entity.RolEntity;
 import com.example.backendh93p1.entity.UsuarioRolEntity;
 import com.example.backendh93p1.entity.UsuariosEntity;
@@ -9,15 +10,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @RestController
 @RequestMapping("/usuario")
-@CrossOrigin("*")
+@CrossOrigin ("http://localhost:4200/")
 public class UsuarioController {
 
     @Autowired
     private UsuarioServices userService;
+
+    @Autowired
+    private UsuarioRepository userRepos;
 
     @GetMapping (value = "/{username}")
     public UsuariosEntity obtenerUsuario (@PathVariable("username") String username){
@@ -26,6 +31,10 @@ public class UsuarioController {
         return userlocal;
     }
 
+    @GetMapping ("/listarUsuario")
+    public List<UsuariosEntity> busquedaDatoUsuario (){
+        return (List<UsuariosEntity>) userRepos.findAll();
+    }
 
     @PostMapping("/registrarUsuario")
     public UsuariosEntity agregarUsuario (@RequestBody UsuariosEntity userJsonEntity) throws Exception{

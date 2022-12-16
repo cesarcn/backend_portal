@@ -1,6 +1,5 @@
 package com.example.backendh93p1.controller;
 
-
 import com.example.backendh93p1.entity.Examen;
 import com.example.backendh93p1.entity.Pregunta;
 import com.example.backendh93p1.services.ExamenService;

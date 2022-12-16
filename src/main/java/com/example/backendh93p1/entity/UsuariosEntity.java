@@ -17,6 +17,8 @@ public class UsuariosEntity implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idusurios;
 
+
+
     private String username;
 
     private String password;
@@ -27,9 +29,15 @@ public class UsuariosEntity implements UserDetails {
     private String perfiluser;
     private boolean enable = true;
 
+
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "usuariorol")
     @JsonIgnore
     private Set<UsuarioRolEntity> usuariorolentity = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "oneexamen")
+    @JsonIgnore
+    private Set<examenAlumno> examenalmentity = new HashSet<>();
 
     public Integer getIdusurios() {
         return idusurios;
@@ -145,4 +153,11 @@ public class UsuariosEntity implements UserDetails {
     }
 
 
+    public Set<examenAlumno> getExamenalmentity() {
+        return examenalmentity;
+    }
+
+    public void setExamenalmentity(Set<examenAlumno> examenalmentity) {
+        this.examenalmentity = examenalmentity;
+    }
 }

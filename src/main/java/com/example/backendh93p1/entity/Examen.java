@@ -9,7 +9,6 @@ import java.util.Set;
 @Entity
 @Table(name = "examenes")
 public class Examen {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long examenId;
@@ -21,11 +20,18 @@ public class Examen {
     private boolean activo = false;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    private  UsuariosEntity usuariosEntity;
+
+    @ManyToOne(fetch = FetchType.EAGER)
     private Categoria categoria;
 
     @OneToMany(mappedBy = "examen",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Pregunta> preguntas = new HashSet<>();
+
+    @OneToMany(mappedBy = "usersusuario",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<examenAlumno> examenalmentity = new HashSet<>();
 
     public Long getExamenId() {
         return examenId;
@@ -83,6 +89,10 @@ public class Examen {
         this.categoria = categoria;
     }
 
+    public UsuariosEntity getUsuariosEntity(){return usuariosEntity; }
+
+    public void setUsuariosEntity(UsuariosEntity usuariosEntity){this.usuariosEntity = usuariosEntity;}
+
     public Set<Pregunta> getPreguntas() {
         return preguntas;
     }
@@ -92,5 +102,13 @@ public class Examen {
     }
 
     public Examen() {
+    }
+
+    public Set<examenAlumno> getExamenalmentity() {
+        return examenalmentity;
+    }
+
+    public void setExamenalmentity(Set<examenAlumno> examenalmentity) {
+        this.examenalmentity = examenalmentity;
     }
 }
